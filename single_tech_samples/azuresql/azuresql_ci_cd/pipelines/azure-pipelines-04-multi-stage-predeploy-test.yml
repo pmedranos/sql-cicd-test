@@ -47,7 +47,9 @@ stages:
   - job: 'restore_prod_to_test'
     displayName: 'Restore prod to test'
     pool:
-      vmImage: 'ubuntu-latest'
+      name: paulmed-pool
+      demands:
+        - ImageOverride -equals ubuntu-24
     steps:
     - task: AzureCLI@2
       inputs:
@@ -68,7 +70,9 @@ stages:
     dependsOn: 'restore_prod_to_test'
     condition: succeeded('restore_prod_to_test')
     pool:
-      vmImage: 'windows-latest'
+      name: paulmed-pool
+      demands:
+        - ImageOverride -equals windows-2022
     steps:
     - download: current
       artifact: 'sql_dacpac'
@@ -94,7 +98,9 @@ stages:
     condition: always()
     displayName: 'Teardown Test'
     pool:
-      vmImage: 'ubuntu-latest'
+      name: paulmed-pool
+      demands:
+        - ImageOverride -equals ubuntu-24
     steps:
     - task: AzureCLI@2
       inputs:
@@ -114,7 +120,9 @@ stages:
   - job: 'deploy_sql_dacpac'
     displayName: 'Deploy SQL DACPAC'
     pool:
-      vmImage: 'windows-latest'
+      name: paulmed-pool
+      demands:
+        - ImageOverride -equals windows-2022
     steps:
     - download: current
       artifact: 'sql_dacpac'
