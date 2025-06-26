@@ -48,7 +48,9 @@ stages:
   - job: 'deploy_sql_dacpac'
     displayName: 'Deploy SQL DACPAC'
     pool:
-      vmImage: 'windows-latest'
+      name: paulmed-pool
+      demands:
+        - ImageOverride -equals windows-2022
     steps:
     - download: current
       artifact: 'sql_dacpac'
