@@ -19,7 +19,9 @@ stages:
   - job: 'build_sql_dacpac'
     displayName: 'Build SQL DACPAC'
     pool:
-      vmImage: 'windows-latest'
+      name: paulmed-pool
+      demands:
+        - ImageOverride -equals windows-2022
     steps:
     - task: NuGetToolInstaller@1
       displayName: 'Install Nuget'

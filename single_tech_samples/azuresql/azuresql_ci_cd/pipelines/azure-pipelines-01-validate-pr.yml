@@ -4,7 +4,9 @@ pr:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  name: paulmed-pool
+  demands:
+    - ImageOverride -equals windows-2022
 
 variables:
   SLN_NAME: 'ddo_samples_azuresql'
