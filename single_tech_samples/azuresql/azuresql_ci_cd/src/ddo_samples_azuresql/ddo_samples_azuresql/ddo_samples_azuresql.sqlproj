@@ -96,5 +96,9 @@
     <Build Include="dbo\User Defined Types\AccountNumber.sql" />
     <Build Include="Security\SalesLT.sql" />
     <Build Include="SalesLT\Sequences\SalesOrderNumber.sql" />
+    <Build Include="CompanyAddress.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ddo_samples_azuresql.refactorlog" />
   </ItemGroup>
 </Project>
