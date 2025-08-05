@@ -128,12 +128,12 @@ stages:
       artifact: 'sql_dacpac'
     - task: AzureKeyVault@1
       inputs:
-        azureSubscription: 'mdwdo-azsql'
+        azureSubscription: 'mdwdo-azsql-cicd'
         KeyVaultName: '$(AZURE_KEYVAULT_NAME)'
         SecretsFilter: '*'
     - task: SqlAzureDacpacDeployment@1
       inputs:
-        azureSubscription: 'mdwdo-azsql'
+        azureSubscription: 'mdwdo-azsql-cicd'
         AuthenticationType: 'server'
         ServerName: '$(AZURESQL_FULL_SERVER_NAME)'
         DatabaseName: '$(AZURESQL_DB_NAME)'
